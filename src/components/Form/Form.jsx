@@ -1,21 +1,21 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import './Form.css';
-import {useTelegram} from "../hooks/useTelegram";
+import {useTelegram} from "../../hooks/useTelegram";
 
 const Form = () => {
-    const [phio, setPhio] = useState('');
-    const [city, setCity] = useState('');
+    const [country, setCountry] = useState('');
+    const [street, setStreet] = useState('');
     const [subject, setSubject] = useState('physical');
     const {tg} = useTelegram();
-    //
+
     const onSendData = useCallback(() => {
         const data = {
-            phio,
-            city,
+            country,
+            street,
             subject
         }
         tg.sendData(JSON.stringify(data));
-    }, [phio, city, subject])
+    }, [country, street, subject])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
@@ -31,19 +31,19 @@ const Form = () => {
     }, [])
 
     useEffect(() => {
-        if(!phio || !city) {
+        if(!street || !country) {
             tg.MainButton.hide();
         } else {
             tg.MainButton.show();
         }
-    }, [phio, city])
+    }, [country, street])
 
-    const onChangePhio = (e) => {
-        setPhio(e.target.value)
+    const onChangeCountry = (e) => {
+        setCountry(e.target.value)
     }
 
-    const onChangeCity = (e) => {
-        setCity(e.target.value)
+    const onChangeStreet = (e) => {
+        setStreet(e.target.value)
     }
 
     const onChangeSubject = (e) => {
@@ -56,20 +56,20 @@ const Form = () => {
             <input
                 className={'input'}
                 type="text"
-                placeholder={'ФИО'}
-                value={phio}
-                onChange={onChangePhio}
+                placeholder={'Страна'}
+                value={country}
+                onChange={onChangeCountry}
             />
             <input
                 className={'input'}
                 type="text"
-                placeholder={'Город'}
-                value={city}
-                onChange={onChangeCity}
+                placeholder={'Улица'}
+                value={street}
+                onChange={onChangeStreet}
             />
             <select value={subject} onChange={onChangeSubject} className={'select'}>
-                <option value={'physical'}>Ученик</option>
-                <option value={'legal'}>Учитель</option>
+                <option value={'physical'}>Физ. лицо</option>
+                <option value={'legal'}>Юр. лицо</option>
             </select>
         </div>
     );

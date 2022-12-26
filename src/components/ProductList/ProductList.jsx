@@ -1,19 +1,19 @@
 import React, {useState} from 'react';
 import './ProductList.css';
 import ProductItem from "../ProductItem/ProductItem";
-import {useTelegram} from "../hooks/useTelegram";
+import {useTelegram} from "../../hooks/useTelegram";
 import {useCallback, useEffect} from "react";
 
 const products = [
-    {id: '1', title: 'Геометрия', price: 300, description: 'Задача 7 класса о ...'},
-    {id: '2', title: 'Окр. мир', price: 400, description: 'Задача 6 класса о ...'},
-    {id: '3', title: 'Математика', price: 600, description: 'Задача 2 класса о ...'},
-    {id: '4', title: 'Русский язык', price: 200, description: 'Задача 5 класса о ...'},
-    {id: '5', title: 'География', price: 100, description: 'Задача 8 класса о ...'},
-    {id: '6', title: 'Алгебра', price: 600, description: 'Задача 10 класса о ...'},
-
+    {id: '1', title: 'Джинсы', price: 5000, description: 'Синего цвета, прямые'},
+    {id: '2', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая'},
+    {id: '3', title: 'Джинсы 2', price: 5000, description: 'Синего цвета, прямые'},
+    {id: '4', title: 'Куртка 8', price: 122, description: 'Зеленого цвета, теплая'},
+    {id: '5', title: 'Джинсы 3', price: 5000, description: 'Синего цвета, прямые'},
+    {id: '6', title: 'Куртка 7', price: 600, description: 'Зеленого цвета, теплая'},
+    {id: '7', title: 'Джинсы 4', price: 5500, description: 'Синего цвета, прямые'},
+    {id: '8', title: 'Куртка 5', price: 12000, description: 'Зеленого цвета, теплая'},
 ]
-
 
 const getTotalPrice = (items = []) => {
     return items.reduce((acc, item) => {
@@ -21,7 +21,7 @@ const getTotalPrice = (items = []) => {
     }, 0)
 }
 
-const TasksList = () => {
+const ProductList = () => {
     const [addedItems, setAddedItems] = useState([]);
     const {tg, queryId} = useTelegram();
 
@@ -82,4 +82,4 @@ const TasksList = () => {
     );
 };
 
-export default TasksList;
+export default ProductList;
