@@ -1,16 +1,12 @@
 import './App.css';
+
 import {useEffect} from "react";
 
 import Header from "./components/Header/Header";
 import {Route, Routes} from 'react-router-dom'
-import Form from "./components/Form/Form";
-import './App.css';
-import {useEffect} from "react";
-import {useTelegram} from "./hooks/useTelegram";
-import Header from "./components/Header/Header";
-import {Route, Routes} from 'react-router-dom'
 import ProductList from "./components/ProductList/ProductList";
 import Form from "./components/Form/Form";
+import {useTelegram} from "./components/hooks/useTelegram";
 
 function App() {
     const {onToggleButton, tg} = useTelegram();
