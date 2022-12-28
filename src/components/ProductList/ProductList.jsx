@@ -5,14 +5,14 @@ import {useTelegram} from "../hooks/useTelegram";
 import {useCallback, useEffect} from "react";
 
 const products = [
-    {id: '1', title: 'Джинсы', price: 5000, description: 'Синего цвета, прямые'},
-    {id: '2', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая'},
-    {id: '3', title: 'Джинсы 2', price: 5000, description: 'Синего цвета, прямые'},
-    {id: '4', title: 'Куртка 8', price: 122, description: 'Зеленого цвета, теплая'},
-    {id: '5', title: 'Джинсы 3', price: 5000, description: 'Синего цвета, прямые'},
-    {id: '6', title: 'Куртка 7', price: 600, description: 'Зеленого цвета, теплая'},
-    {id: '7', title: 'Джинсы 4', price: 5500, description: 'Синего цвета, прямые'},
-    {id: '8', title: 'Куртка 5', price: 12000, description: 'Зеленого цвета, теплая'},
+    {id: '1', title: 'Геометрия', price: 1000, description: 'Задача 1 класса'},
+    {id: '2', title: 'Алгебра', price: 500, description: 'Задача 5 класса'},
+    {id: '3', title: 'Русский язык', price: 700, description: 'Задача 9 класса'},
+    {id: '4', title: 'Биология', price: 300, description: 'Задача 3 класса'},
+    {id: '5', title: 'Анг. яз', price: 200, description: 'Задача 6 класса'},
+    {id: '6', title: 'Химия', price: 160, description: 'Задача 11 класса'},
+    {id: '7', title: 'Астрономия', price: 550, description: 'Задача 8 класса'},
+    {id: '8', title: 'Литературв', price: 120, description: 'Задача 9 класса'},
 ]
 
 const getTotalPrice = (items = []) => {
