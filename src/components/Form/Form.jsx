@@ -3,19 +3,19 @@ import './Form.css';
 import {useTelegram} from "../hooks/useTelegram";
 
 const Form = () => {
-    const [country, setCountry] = useState('');
-    const [street, setStreet] = useState('');
+    const [phio, setPhio] = useState('');
+    const [city, setCity] = useState('');
     const [subject, setSubject] = useState('physical');
     const {tg} = useTelegram();
 
     const onSendData = useCallback(() => {
         const data = {
-            country,
-            street,
+            phio,
+            city,
             subject
         }
         tg.sendData(JSON.stringify(data));
-    }, [country, street, subject])
+    }, [phio, city, subject])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
@@ -31,19 +31,19 @@ const Form = () => {
     }, [])
 
     useEffect(() => {
-        if(!street || !country) {
+        if(!city || !phio) {
             tg.MainButton.hide();
         } else {
             tg.MainButton.show();
         }
-    }, [country, street])
+    }, [phio, city])
 
-    const onChangeCountry = (e) => {
-        setCountry(e.target.value)
+    const onChangePhio = (e) => {
+        setPhio(e.target.value)
     }
 
-    const onChangeStreet = (e) => {
-        setStreet(e.target.value)
+    const onChangeCity = (e) => {
+        setCity(e.target.value)
     }
 
     const onChangeSubject = (e) => {
@@ -57,19 +57,19 @@ const Form = () => {
                 className={'input'}
                 type="text"
                 placeholder={'Страна'}
-                value={country}
-                onChange={onChangeCountry}
+                value={phio}
+                onChange={onChangePhio}
             />
             <input
                 className={'input'}
                 type="text"
                 placeholder={'Улица'}
-                value={street}
-                onChange={onChangeStreet}
+                value={city}
+                onChange={onChangeCity}
             />
             <select value={subject} onChange={onChangeSubject} className={'select'}>
-                <option value={'physical'}>Физ. лицо</option>
-                <option value={'legal'}>Юр. лицо</option>
+                <option value={'physical'}>Ученик</option>
+                <option value={'legal'}>Учитель</option>
             </select>
         </div>
     );
